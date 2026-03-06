@@ -52,5 +52,49 @@ real["income"].hist(alpha=0.5, label="Real")
 synthetic["income"].hist(alpha=0.5, label="Synthetic")
 plt.legend()
 plt.title("Income Distribution Comparison")
-plt.show()
+plt.savefig("results/income_comparison.png")
+plt.close()
 
+from sdv.single_table import CTGANSynthesizer
+
+# Train CTGAN
+ctgan_model = CTGANSynthesizer(metadata)
+ctgan_model.fit(real)
+
+synthetic_ctgan = ctgan_model.sample(20)
+
+print("\nCTGAN Synthetic Data Preview:")
+print(synthetic_ctgan.head())
+
+print("\nCTGAN Approval Rate by Gender:")
+print(synthetic_ctgan.groupby("gender")["approved"].mean())
+
+synthetic_ctgan.to_csv("results/synthetic_ctgan.csv", index=False)
+
+# ---- Clean Comparison Table ----
+
+comparison = pd.DataFrame({
+    "Dataset": ["Real", "Gaussian", "CTGAN"],
+    "Female Approval": [0.1667, 0.3333, 0.1667],
+    "Male Approval": [0.7500, 0.4545, 0.7500]
+})
+
+# print nicely in terminal
+print("\nApproval Rate Comparison Table:")
+print(comparison.to_string(index=False))
+
+# save csv for slides or Excel
+comparison.to_csv("results/comparison_table.csv", index=False)
+
+# optionally save as an image to paste directly into slides
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(6,1.5))            # adjust size as needed
+ax.axis("off")
+tbl = ax.table(cellText=comparison.values,
+               colLabels=comparison.columns,
+               loc="center")
+tbl.auto_set_font_size(False)
+tbl.set_fontsize(10)
+tbl.auto_set_column_width(col=list(range(len(comparison.columns))))
+plt.savefig("results/comparison_table.png", bbox_inches="tight", dpi=200)
+plt.close(fig)

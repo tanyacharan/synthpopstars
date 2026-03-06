@@ -1,0 +1,4 @@
+Dataset,Female Approval,Male Approval
+Real,0.1667,0.75
+Gaussian,0.3333,0.4545
+CTGAN,0.1667,0.75
