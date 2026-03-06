@@ -38,3 +38,19 @@ print(real.groupby("gender")["approved"].mean())
 print("\nSynthetic approval rate by gender:")
 print(synthetic.groupby("gender")["approved"].mean())
 
+print(real.groupby("gender")["approved"].mean())
+print(synthetic.groupby("gender")["approved"].mean())
+print("\nReal income stats:")
+print(real["income"].describe())
+
+print("\nSynthetic income stats:")
+print(synthetic["income"].describe())
+
+import matplotlib.pyplot as plt
+
+real["income"].hist(alpha=0.5, label="Real")
+synthetic["income"].hist(alpha=0.5, label="Synthetic")
+plt.legend()
+plt.title("Income Distribution Comparison")
+plt.show()
+
