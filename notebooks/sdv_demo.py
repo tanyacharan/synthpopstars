@@ -71,7 +71,6 @@ print(synthetic_ctgan.groupby("gender")["approved"].mean())
 
 synthetic_ctgan.to_csv("results/synthetic_ctgan.csv", index=False)
 
-# ---- Clean Comparison Table ----
 
 comparison = pd.DataFrame({
     "Dataset": ["Real", "Gaussian", "CTGAN"],
@@ -79,16 +78,15 @@ comparison = pd.DataFrame({
     "Male Approval": [0.7500, 0.4545, 0.7500]
 })
 
-# print nicely in terminal
 print("\nApproval Rate Comparison Table:")
 print(comparison.to_string(index=False))
 
-# save csv for slides or Excel
+
 comparison.to_csv("results/comparison_table.csv", index=False)
 
-# optionally save as an image to paste directly into slides
+
 import matplotlib.pyplot as plt
-fig, ax = plt.subplots(figsize=(6,1.5))            # adjust size as needed
+fig, ax = plt.subplots(figsize=(6,1.5))            
 ax.axis("off")
 tbl = ax.table(cellText=comparison.values,
                colLabels=comparison.columns,
