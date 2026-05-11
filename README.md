@@ -34,10 +34,25 @@ Metrics used:
 - Fairness metrics (FPR, FNR, Precision by group)
 
 ## How to Run
-1. Open the notebook in Jupyter or Google Colab
-2. Run data preparation
-3. Run model training (Logistic Regression / Random Forest)
-4. Run evaluation (TSTR + fairness)
+
+1. Open the notebooks in Jupyter Notebook or Google Colab:
+   - midtermreportregressionmodel.ipynb
+   - RandomForestmodel.ipynb
+
+2. Make sure the dataset files are in the same folder:
+   - diabetic_data.csv
+   - german.data
+   - diabetic_data_synthetic_gen1.csv
+   - german_credit_synthetic_gen1.csv
+
+3. Run all cells from top to bottom:
+   - Data preparation
+   - Model training (Logistic Regression / Random Forest)
+   - Evaluation (TSTR + fairness metrics)
+
+4. Check the outputs:
+   - Performance metrics (Accuracy, F1, AUC)
+   - Fairness tables
 
 ## Results
 - Synthetic data preserves patterns but not perfectly
