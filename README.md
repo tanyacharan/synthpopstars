@@ -36,7 +36,7 @@ Metrics used:
 ## How to Run
 
 1. Open the notebooks in Jupyter Notebook or Google Colab:
-   - midtermreportregressionmodel.ipynb
+   - logisticregressionmodels.ipynb
    - RandomForestmodel.ipynb
 
 2. Make sure the dataset files are in the same folder:
