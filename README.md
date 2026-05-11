@@ -66,5 +66,4 @@ Although there are some differences compared to real data, especially across cer
 
 Overall, synthetic data should be viewed as a complementary approach rather than a complete replacement for real data, with fairness and performance checks playing an important role in its application.
 
-## Team
-SynthPopStars
+
